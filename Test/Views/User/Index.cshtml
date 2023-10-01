@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Model.Model.User>
+
+@{
+    ViewData["Title"] = "Библиотека";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Добро пожаловать в библиотеку</h2>
+                    <form method="post" action="@Url.Action("Login", "User")">
+                        <div class="form-group">
+                            <label for="LastName">Фамилия:</label>
+                            <select class="form-control" id="LastName" name="selectedLastName">
+                                @foreach (var user in Model)
+                                {
+                                    <option>@user.LastName</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Войти</button>
+                    </form>
+                    <p class="text-center mt-3">Если вашей фамилии нет в списке, вы можете зарегистрироваться:</p>
+                    <a asp-action="RegisterUser">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

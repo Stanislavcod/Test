@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Model.Model.Book>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Все книги";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Доступные книги</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Код книги</th>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Доступность</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Name</td>
+                    <td>@book.Author</td>
+                    <td>
+                        @(book.IsAvailable ? "Доступна" : "Не доступна")
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

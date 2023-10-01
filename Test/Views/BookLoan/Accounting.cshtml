@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Model.Model.BookLoan>
+@{
+    ViewData["Title"] = "Учет книг";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Учет книг</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Название книги</th>
+                <th>Читатель</th>
+                <th>Дата взятия</th>
+                <th>Дата возврата</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bookLoan in Model)
+            {
+                <tr>
+                    <td>@bookLoan.Book.Name</td>
+                    <td>@bookLoan.User.LastName</td>
+                    <td>@bookLoan.LoanDate</td>
+                    <td>@bookLoan.ReturnDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
